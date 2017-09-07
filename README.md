@@ -3,11 +3,15 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: Firs we accept that the two values in each naked twins pair MUST exist within those boxes. Since constraint propagation is a form of inference, we can determine that the values shared by the naked twins can not possibly exist in any of their peer boxes, so we will filter them out; essentially enforcing constraints on the peer boxes we could not have concluded without the naked twins strategy.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: The diagonal sudoku introduces two new `units` to our `unitlist` (going from A1 -> I9, and I1 -> A9). From there it follows the two constraint strategies from lesson #04 (`eliminate` and `only_choice` as well as `naked_twins`, which is better explained above). The `eliminate` strategy allows us to iterate through the board and filter out the single values of a box from the values of that boxes peer: we're able infer that the value in a box of a single value can not exist in the values of a box we are unsure of.
+
+For our `only_choice` strategy what we look to do is we look at the peers of a box and see if it holds a value that none of it's peers holds. If that is the case we can make the assumption that that value must be the actual value of that box.
+
+And we apply these two strategies indefinitely, applying constraints to our board and boxes until we remove all values that do not make sense.
 
 ### Install
 
